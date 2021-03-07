@@ -20,6 +20,7 @@ const App = {
 
       // get accounts
       const accounts = await web3.eth.getAccounts();
+      console.log(accounts);
       this.account = accounts[0];
     } catch (error) {
       console.error("Could not connect to contract or chain.");
@@ -33,7 +34,7 @@ const App = {
 
   createStar: async function() {
     const { createStar } = this.meta.methods;
-    const name = document.getElementById("starNgit ame").value;
+    const name = document.getElementById("starName").value;
     const id = document.getElementById("starId").value;
     await createStar(name, id).send({from: this.account});
     App.setStatus("New Star Owner is " + this.account + ".");
